@@ -245,6 +245,46 @@
     .mini{padding:12px 5px}
   }
 
+
+  .ideasSection,.comingSection{margin-top:16px;padding:22px}
+  .ideaComposer{display:grid;grid-template-columns:1fr auto;gap:10px;margin-top:14px}
+  .ideaComposer textarea{
+    width:100%;min-height:92px;resize:vertical;border:1px solid rgba(255,255,255,.12);
+    background:rgba(4,31,43,.35);color:#fff;border-radius:16px;padding:14px;outline:none;
+    font-family:inherit;line-height:1.7
+  }
+  .ideaComposer textarea::placeholder{color:rgba(255,255,255,.45)}
+  .ideasList{display:grid;gap:9px;margin-top:14px}
+  .ideaItem{
+    display:flex;justify-content:space-between;gap:12px;align-items:flex-start;
+    padding:13px 14px;border-radius:16px;background:rgba(4,31,43,.25);
+    border:1px solid rgba(255,255,255,.08)
+  }
+  .ideaItem span{line-height:1.7}
+  .ideaDelete{
+    border:0;background:transparent;color:rgba(255,255,255,.55);
+    padding:2px 6px;font-size:16px
+  }
+  .ideaHint{margin-top:10px;color:var(--muted);font-size:11px;line-height:1.7}
+  .comingGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:15px}
+  .comingCard{
+    position:relative;padding:18px;border-radius:20px;background:rgba(4,31,43,.28);
+    border:1px solid rgba(255,255,255,.10);min-height:150px
+  }
+  .comingCard .icon{font-size:30px;margin-bottom:9px}
+  .comingCard h3{margin:0 0 8px;font-size:16px}
+  .comingCard p{margin:0;color:var(--muted);font-size:12px;line-height:1.7}
+  .comingTag{
+    display:inline-block;margin-top:12px;padding:5px 9px;border-radius:999px;
+    font-size:10px;font-weight:800;background:rgba(102,230,223,.11);
+    border:1px solid rgba(102,230,223,.22);color:var(--aqua)
+  }
+  @media(max-width:900px){.comingGrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media(max-width:600px){
+    .ideaComposer{grid-template-columns:1fr}
+    .comingGrid{grid-template-columns:1fr}
+  }
+
 </style>
 </head>
 <body>
@@ -399,7 +439,76 @@
     </section>
 
 
-    <div class="footer">RAS SUDR 2026 • CREW EDITION • NO EXCUSES • JUST VIBES</div>
+    
+    <section class="glass ideasSection">
+      <div class="sectionTitle" style="margin-top:0">
+        <div>
+          <h2>Idea Box 💡</h2>
+          <small>عندك فكرة تخلي الصفحة أو السفرية أطرش؟ اكتبها هنا.</small>
+        </div>
+      </div>
+      <div class="ideaComposer">
+        <textarea id="ideaInput" placeholder="مثال: نضيف تصويت مين هيتأخر يوم السفر؟"></textarea>
+        <button onclick="addIdea()">ضيف الاقتراح</button>
+      </div>
+      <div class="buttons">
+        <button class="secondary" onclick="shareIdeas()">شارك الاقتراحات</button>
+      </div>
+      <div class="ideasList" id="ideasList"></div>
+      <div class="ideaHint">
+        الاقتراحات هنا بتتحفظ على الجهاز اللي كتبها. زر «شارك الاقتراحات» يخلّيك تبعتها للجروب بسهولة.
+        لما نحب نخلي كل الاقتراحات مشتركة وتظهر لكل الناس تلقائيًا، هنربط الصفحة بقاعدة بيانات.
+      </div>
+    </section>
+
+    <section class="glass comingSection">
+      <div class="sectionTitle" style="margin-top:0">
+        <div>
+          <h2>Coming Soon — كل ما المعاد يقرب 🚀</h2>
+          <small>أقسام هنفتحها بالتدريج بدل ما نحط كل حاجة من دلوقتي.</small>
+        </div>
+      </div>
+      <div class="comingGrid">
+        <div class="comingCard">
+          <div class="icon">💰</div>
+          <h3>حاسبة المصاريف</h3>
+          <p>تسجيل مصاريف الشاليه والسوبرماركت والبنزين والأكل وتقسيم الحساب على المجموعة.</p>
+          <span class="comingTag">قريبًا</span>
+        </div>
+        <div class="comingCard">
+          <div class="icon">🛒</div>
+          <h3>قائمة المشتريات</h3>
+          <p>طلبات السوبرماركت والكميات والمسؤول عن كل حاجة قبل التحرك.</p>
+          <span class="comingTag">قبل السفر</span>
+        </div>
+        <div class="comingCard">
+          <div class="icon">🚗</div>
+          <h3>العربيات والتوزيع</h3>
+          <p>مين راكب مع مين، نقطة التجمع، وقت التحرك، ومسؤولية إيمولا في عدم تعطيل البشرية.</p>
+          <span class="comingTag">قبل السفر</span>
+        </div>
+        <div class="comingCard">
+          <div class="icon">🗳️</div>
+          <h3>تصويتات الشلة</h3>
+          <p>مين هيتأخر؟ مين هيصحى آخر واحد؟ أنهي أكلة؟ وأي قرارات مصيرية لازم تتاخد ديمقراطيًا.</p>
+          <span class="comingTag">Soon</span>
+        </div>
+        <div class="comingCard">
+          <div class="icon">🍳</div>
+          <h3>منيو الرحلة</h3>
+          <p>خطة الأكل، وجبات الشيف، الصوصات، والمكونات اللي لازم تتجهز من القاهرة.</p>
+          <span class="comingTag">قبل السفر</span>
+        </div>
+        <div class="comingCard">
+          <div class="icon">🎣</div>
+          <h3>Fishing Operations</h3>
+          <p>عدة الصيد، الطُعم، وقت النزول، وتقرير رسمي عن السمك اللي نايم من المغرب.</p>
+          <span class="comingTag">قيد التخطيط</span>
+        </div>
+      </div>
+    </section>
+
+<div class="footer">RAS SUDR 2026 • CREW EDITION • NO EXCUSES • JUST VIBES</div>
   </main>
 </div>
 <div class="toast" id="toast"></div>
@@ -439,7 +548,19 @@ const CONFIG = {
     "يتنازل عن اختيار الأغنية الجاية 🎵",
     "يصحّي إيمولا الصبح — أصعب عقاب 😭",
     "يبقى مسؤول تصوير الجروب لمدة ساعة 📸",
-    "يجهز الفطار مع الشيف 👨‍🍳"
+    "يجهز الفطار مع الشيف 👨‍🍳",
+    "يشيل أكياس السوبرماركت من العربية للشاليه.",
+    "يعمل أول جولة مشروبات للجروب كله.",
+    "ممنوع يعترض على البلاي ليست لمدة ساعة.",
+    "يبقى مسؤول الفحم والشواية في الوجبة الجاية 🔥",
+    "ينزل البحر أول واحد مهما كانت الميه ساقعة.",
+    "يقول لكل واحد في الجروب حاجة حلوة عنه — عقاب نفسي قاسي 😂",
+    "يرتب السفرة بعد الأكل لوحده.",
+    "يجيب سناكس مفاجأة للجروب من جيبه.",
+    "يبقى Navigator رسمي في أول مشوار.",
+    "يشارك في تجهيز عدة الصيد قبل المغرب 🎣",
+    "يسلم موبايله للشيف يختار له صورة بروفايل لمدة ساعة 😂",
+    "يكتب اعتذار رسمي للجروب بعنوان: أنا سبب التأخير."
   ],
   quotes: [
     "راس سدر مش رحلة… دي إعادة ضبط مصنع.",
@@ -449,7 +570,19 @@ const CONFIG = {
     "7 أكتوبر: اليوم الرسمي لاختفاء المسؤولية.",
     "إحنا مش مستنيين إجازة… الإجازة هي اللي مستنيانا.",
     "باقي شوية ونبدأ أهم اجتماع سنوي: البحر × الصحاب.",
-    "الـOut of Office السنة دي هيبقى له معنى."
+    "الـOut of Office السنة دي هيبقى له معنى.",
+    "اللي مش مجهز نفسه من دلوقتي يتحمل المسؤولية أمام التاريخ.",
+    "كل ما العداد يقل، نسبة التركيز في الشغل تقل معاه.",
+    "راس سدر بتنادي… وإحنا للأسف لسه بنرد من المكتب.",
+    "خلي بالك: الرحلة قربت، والأعذار بتتقفل واحد ورا التاني.",
+    "السنة كلها تمهيد لأربع أيام في راس سدر.",
+    "البحر مستنينا… والسمك نايم من المغرب أصلًا.",
+    "الجدول الرسمي: نصحى متأخر، ناكل، نروق، ونكرر.",
+    "الحجز بيتأكد مرة… الحماس بيتأكد كل يوم.",
+    "لو اليوم كان وحش، افتكر إن 7 أكتوبر موجود.",
+    "مش بنعد الأيام… إحنا بنخصمها.",
+    "أي مشكلة قبل السفرية لها حل. أي مشكلة أثناء السفرية تتأجل لما نرجع.",
+    "Same crew. New year. Same chaos."
   ]
 };
 
@@ -533,7 +666,23 @@ function panic(){
     "مفيش زرار يسرّع أكتوبر للأسف 😭",
     "حاول تنام بدري… الأيام هتعدي أسرع 😂",
     "تم إرسال طلب رسمي للزمن إنه يسرّع.",
-    "Error 404: الصبر غير موجود."
+    "Error 404: الصبر غير موجود.",
+    "راجعت العداد مرتين… للأسف لسه نفس الرقم.",
+    "متضغطش تاني، إحنا كمان مستعجلين.",
+    "تم تصعيد الموضوع لإدارة الوقت… مفيش رد.",
+    "للأسف أكتوبر مش بيقبل استعجال.",
+    "كل ضغطة بتزود الحماس، مش بتقلل الأيام.",
+    "جاري محاولة رشوة التقويم للوصول لـ7 أكتوبر.",
+    "لو فضلت تضغط كده هنضطر نسافر النهارده.",
+    "الصبر خلص من المخزن. الشحنة الجاية يوم السفر.",
+    "الوقت بيتحرك… بس واضح إنه رايح على مهله.",
+    "استنى يا نجم، حتى السمك لسه نايم من المغرب.",
+    "تم تفعيل Fast Forward… بهزر، مفيش حاجة حصلت 😂",
+    "أقرب حل حاليًا: اقفل اللابتوب ونام كام يوم.",
+    "تم رفض طلب تقديم موعد الرحلة لعدم كفاية الواسطة.",
+    "العداد بيقولك: متبصليش كل خمس دقايق.",
+    "باقي شوية… حاول ما تحجزش راس سدر لوحدك.",
+    "نعلن رسميًا أن الانتظار أصبح جزءًا من الرحلة."
   ];
   showToast(msgs[Math.floor(Math.random()*msgs.length)]);
 }
@@ -622,6 +771,61 @@ function updateSecretMode(daysLeft){
 }
 
 
+
+function getIdeas(){
+  return JSON.parse(localStorage.getItem("rasSudrIdeas")||"[]");
+}
+
+function buildIdeas(){
+  const list=$("ideasList");
+  const ideas=getIdeas();
+  list.innerHTML="";
+  if(!ideas.length){
+    list.innerHTML='<div class="ideaHint">لسه مفيش اقتراحات محفوظة على الجهاز ده.</div>';
+    return;
+  }
+  ideas.forEach((idea,i)=>{
+    const row=document.createElement("div");
+    row.className="ideaItem";
+    row.innerHTML=`<span>${idea}</span><button class="ideaDelete" onclick="deleteIdea(${i})" title="حذف">×</button>`;
+    list.appendChild(row);
+  });
+}
+
+function addIdea(){
+  const input=$("ideaInput");
+  const idea=input.value.trim();
+  if(!idea){showToast("اكتب الفكرة الأول يا مبدع 😄");return;}
+  const ideas=getIdeas();
+  ideas.push(idea);
+  localStorage.setItem("rasSudrIdeas",JSON.stringify(ideas));
+  input.value="";
+  buildIdeas();
+  showToast("الفكرة اتحفظت 💡");
+}
+
+function deleteIdea(i){
+  const ideas=getIdeas();
+  ideas.splice(i,1);
+  localStorage.setItem("rasSudrIdeas",JSON.stringify(ideas));
+  buildIdeas();
+}
+
+function shareIdeas(){
+  const ideas=getIdeas();
+  if(!ideas.length){showToast("مفيش اقتراحات نشاركها لسه.");return;}
+  const text="اقتراحات Ras Sudr Mission 2026:\\n\\n"+ideas.map((x,i)=>`${i+1}. ${x}`).join("\\n");
+  if(navigator.share){
+    navigator.share({title:"Ras Sudr Mission Ideas",text}).catch(()=>{});
+  }else if(navigator.clipboard){
+    navigator.clipboard.writeText(text);
+    showToast("الاقتراحات اتنسخت — ابعتها للجروب 👌");
+  }else{
+    showToast("انسخ الاقتراحات يدويًا من الصفحة.");
+  }
+}
+
+
 function buildChecklist(){
   const saved=JSON.parse(localStorage.getItem("rasSudrChecklist")||"[]");
   const box=$("checklist"); box.innerHTML="";
@@ -648,6 +852,7 @@ function updateDone(){
 }
 
 buildCrew();
+buildIdeas();
 buildChecklist();
 updateCountdown();
 setInterval(updateCountdown,1000);
